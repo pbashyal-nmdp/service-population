@@ -23,18 +23,29 @@
 */
 package org.nmdp.population.service;
 
+import org.nmdp.population.dao.PopulationRepository;
 import org.nmdp.population.domain.Population;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PopulationServiceImpl implements PopulationService {
+
+    private final PopulationRepository populationRepository;
+
+    @Autowired
+    public PopulationServiceImpl(@Qualifier("populationRepository") PopulationRepository populationRepository) {
+        this.populationRepository = populationRepository;
+    }
+
     @Override
     public Population getPopulation(Long populationId) {
-        return new Population(populationId, "NAMER", "North American");
+        return populationRepository.findOne(populationId);
     }
 
     @Override
     public Population createPopulation(String name, String description) {
-        return new Population(99, name, description);
+        return populationRepository.save(new Population(name, description));
     }
 }

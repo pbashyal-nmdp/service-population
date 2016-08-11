@@ -25,6 +25,9 @@
 
 package org.nmdp.population.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -33,15 +36,26 @@ import java.io.Serializable;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Entity
 public class Population implements Serializable{
+
     @XmlAttribute
+    @Id
+    @GeneratedValue
     private long id;
+
     @XmlAttribute
     private String name;
+
     @XmlAttribute
     private String description;
 
     public Population() {
+    }
+
+    public Population(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public Population(long id, String name, String description) {
@@ -60,5 +74,14 @@ public class Population implements Serializable{
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toString() {
+        return "Population{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

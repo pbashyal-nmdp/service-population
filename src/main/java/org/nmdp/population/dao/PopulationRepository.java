@@ -23,19 +23,13 @@
  *
  */
 
-package org.nmdp.population.controller;
+package org.nmdp.population.dao;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.nmdp.population.domain.Population;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-@RestController
-@RequestMapping("/")
-public class IndexController {
+@Repository
+public interface PopulationRepository extends CrudRepository<Population, Long> {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView indexController() {
-        return new ModelAndView("redirect:swagger-ui.html");
-    }
 }
