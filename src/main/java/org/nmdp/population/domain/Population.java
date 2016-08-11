@@ -28,6 +28,7 @@ package org.nmdp.population.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -37,11 +38,12 @@ import java.io.Serializable;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-public class Population implements Serializable{
+@SequenceGenerator(name = "PopulationIdGenerator", schema = "Population", sequenceName = "SEQ_POPULATION", allocationSize = 1)
+public class Population implements Serializable {
 
     @XmlAttribute
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "PopulationIdGenerator")
     private long id;
 
     @XmlAttribute
