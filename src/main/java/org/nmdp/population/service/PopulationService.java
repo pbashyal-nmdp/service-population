@@ -23,15 +23,12 @@
  *
  */
 
-package org.nmdp.population;
+package org.nmdp.population.service;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.nmdp.population.domain.Population;
 
-@SpringBootApplication
-public class ServicePopulationApplication {
+public interface PopulationService {
+    Population getPopulation(Long populationId);
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServicePopulationApplication.class, args);
-	}
+    Population createPopulation(String name, String description);
 }

@@ -23,15 +23,42 @@
  *
  */
 
-package org.nmdp.population;
+package org.nmdp.population.domain;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
-@SpringBootApplication
-public class ServicePopulationApplication {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Population implements Serializable{
+    @XmlAttribute
+    private long id;
+    @XmlAttribute
+    private String name;
+    @XmlAttribute
+    private String description;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServicePopulationApplication.class, args);
-	}
+    public Population() {
+    }
+
+    public Population(long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

@@ -23,15 +23,27 @@
  *
  */
 
-package org.nmdp.population;
+package org.nmdp.population.domain;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.io.Serializable;
 
-@SpringBootApplication
-public class ServicePopulationApplication {
+public class PopulationRequest implements Serializable{
+    private String name;
+    private String description;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServicePopulationApplication.class, args);
-	}
+    public PopulationRequest() {
+    }
+
+    public PopulationRequest(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
